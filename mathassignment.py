@@ -56,24 +56,24 @@ def solve_problem_a():
     """문제 A 검증용 함수: 조건에 맞는 순열 개수를 직접 세어 보세요."""
     letters = ['a', 'e', 'b', 'c', 'd']
     cases = get_permutations(letters, 5)
-    print(cases)
     adjacent_count = 0
     for case in cases:
         # TODO: a와 e의 위치 차이가 1인지 확인하세요.
         for k in range(len(case)-1):
             if case[k] + case[k+1] in ['ea','ae']:
                 adjacent_count +=1
-                print(case[k] + case[k+1])
+                print(case[k] + case[k+1], end =" ")
+    print()
 
 
     alternating_count = 0
     vowels = ['a', 'e']
     consonants = ['b', 'c', 'd']
     for case in cases:
-        # TODO: 각 위치의 모음/자음 패턴이 교대로 나타나는지 확인하세요.
-        if case in vowels and next in consonants:
-            alternating_count +=1
-
+        # TODO: 각 위치의 모음/자음 패턴이 교대로 나타나는지 확인하세요. #3P3 * 2P2 = 3! =12
+        print(case)
+        if case[1] in vowels and case[3] in vowels:
+            alternating_count += 1
     print('문제 A (1):', adjacent_count)
     print('문제 A (2):', alternating_count)
 
@@ -86,7 +86,8 @@ def solve_problem_b():
     include_7_count = 0
     for case in cases:
         # TODO: 7이 case 안에 있는지 확인하세요.
-        pass
+        if cases in [7]:
+            include_7_count +=1
 
     even2_odd1_count = 0
     for case in cases:
@@ -102,5 +103,5 @@ if __name__ == '__main__':
     print(get_permutations(['A', 'B', 'C'], 2))
     print(get_combinations(['A', 'B', 'C'], 2))
     solve_problem_a()
-    # solve_problem_b()
+    solve_problem_b()
     pass
