@@ -82,17 +82,34 @@ def solve_problem_b():
     """문제 B 검증용 함수: 조건에 맞는 조합 개수를 직접 세어 보세요."""
     cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     cases = get_combinations(cards, 3)
-
+    print(cases)
     include_7_count = 0
     for case in cases:
         # TODO: 7이 case 안에 있는지 확인하세요.
-        if cases in [7]:
+        if 7 in case:
             include_7_count +=1
 
     even2_odd1_count = 0
+    jjack = []
+    hool = []
+    for k in cards:
+        if k % 2 == 0:
+            jjack.append(k)
+        else :
+            hool.append(k)
+
     for case in cases:
         # TODO: 짝수 개수와 홀수 개수를 세어 조건을 확인하세요.
-        pass
+        #짝수가 적힌 카드 2장과 홀수가 적힌 카드 1장을 뽑는 경우의 수 : 4C2 * 5C1 == 6*5
+        nj = 0
+        nh = 0
+        for i in case:
+            if i in jjack:
+                nj +=1
+            if i in hool:
+                nh +=1
+            if nj == 2 and nh ==1:
+                even2_odd1_count +=1
 
     print('문제 B (1):', include_7_count)
     print('문제 B (2):', even2_odd1_count)
